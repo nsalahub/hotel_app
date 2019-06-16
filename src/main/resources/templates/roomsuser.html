@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>work</title>
+
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Number Of Beds</th>
+        <th scope="col">Price</th>
+        <th scope="col">Booking room</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room,stat : ${rooms}">
+        <td th:text="${stat.count}"></td>
+        <td th:text="${room.title}"></td>
+        <td th:text="${room.numberOfBeds}"></td>
+        <td th:text="${room.price}"></td>
+        <td>
+            <form action="#" th:action="@{/public/hotel/rooms/order}" th:object="${createOrderDTO}" method="post">
+                <input hidden value="#"
+                       th:attr="value=${room.id}" th:name="id">
+                <label for="startDate">Start Date</label>
+                <input id="startDate" type="datetime-local" th:field="*{startDate}">
+                <p th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}">Name error</p>
+
+                <label for="endDate">End Date</label>
+                <input id="endDate" type="datetime-local" th:field="*{endDate}">
+                <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">Name error</p>
+
+                <button type="submit">Booking this room</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

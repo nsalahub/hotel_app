@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>work</title>
+
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Number Of Beds</th>
+        <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room,stat : ${rooms}">
+        <td th:text="${stat.count}"></td>
+        <td th:text="${room.title}"></td>
+        <td th:text="${room.numberOfBeds}"></td>
+        <td th:text="${room.price}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <form action="#" th:action="@{/private/hotel/rooms/new}" method="get">
+        <button type="submit">ADD USER</button>
+    </form>
+</div>
+
+</body>
+</html>

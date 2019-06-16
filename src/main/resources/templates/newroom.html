@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add room</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/private/hotel/rooms/new}" th:object="${room}" method="post">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" th:field="*{title}"> </input>
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Name error</p>
+        </div>
+        <div class="form-group">
+            <label for="numberOfBeds">Number Of Beds</label>
+            <input type="text" class="form-control" id="numberOfBeds" th:field="*{numberOfBeds}"> </input>
+            <p th:if="${#fields.hasErrors('numberOfBeds')}" th:errors="*{numberOfBeds}">Name error</p>
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="text" class="form-control" id="price" th:field="*{price}">
+            <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Name error</p>
+        </div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+
+<a class="page-link" href="#" th:href="@{/private/hotel/rooms}" th:text="Cancel"> </a>
+
+</body>
+</html>
